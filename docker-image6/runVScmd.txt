@@ -1,0 +1,12 @@
+RUN
+
+Executed during:
+docker build
+
+CMD
+
+Executed during:
+docker run
+
+CMD can be overriden
+ENTRYPOINT Harder to replace.
