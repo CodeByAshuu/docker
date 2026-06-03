@@ -1,0 +1,1 @@
+module.exports = "Docker is fun";
