@@ -1,0 +1,46 @@
+services:
+
+  backend:
+    build: ./backend
+    container_name: backend
+
+    ports:
+      - "5000:5000"
+
+    environment:
+      MONGO_USER: root
+      MONGO_PASSWORD: admin123
+
+    depends_on:
+      - mongodb
+
+    networks:
+      - app-network
+
+    configs:
+      - source: app_config
+        target: /etc/app.conf
+
+  mongodb:
+    image: mongo
+    container_name: mongodb
+
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: admin123
+
+    volumes:
+      - mongo_data:/data/db
+
+    networks:
+      - app-network
+
+volumes:
+  mongo_data:
+
+networks:
+  app-network:
+
+configs:
+  app_config:
+    file: ./configs/app.conf
