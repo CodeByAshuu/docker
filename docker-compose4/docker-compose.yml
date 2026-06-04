@@ -1,0 +1,33 @@
+services:
+
+  backend:
+    build: ./backend
+    ports:
+      - "5000:5000"
+    container_name: node-backend
+    environment:
+      MONGODB_USER: root
+      MONGODB_PASSWORD: root123
+    depends_on:
+      - mongodb
+    networks:
+      - app-network
+    
+  mongodb:
+    image: mongo
+    container_name: mongo-db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root123
+    
+    volumes:
+      - mongo_data:/data/db
+
+    networks:
+      - app-network
+
+volumes:
+  mongo_data:
+
+networks:
+  app-network:
