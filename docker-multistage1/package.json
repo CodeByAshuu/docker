@@ -1,0 +1,7 @@
+{
+  "name": "docker-multistage1",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "node app.js > output.txt"
+  }
+}
